@@ -1,3 +1,11 @@
+Links úteis:
+https://developer.wordpress.org/reference
+https://codex.wordpress.org/Theme_Development
+https://codex.wordpress.org/Template_Tags
+https://developer.wordpress.org/themes/basics/template-hierarchy
+https://wphierarchy.com
+https://codex.wordpress.org/The_Loop
+
 1 - Copiar a pasta do site para wp-content/themes/
 
 2 - Mudar o index.html para index.php
@@ -47,10 +55,25 @@ Adicionar no início das páginas/templates:
 O Loop é utilizado para mostrar o conteúdo dos posts,
 ele é inteligente o suficiente para saber se precisa mostrar apenas um ou uma sequência.
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+Adicionar o Loop nas páginas e no index.php
 
-// Aqui vai o conteúdo
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	
+	<?php the_title(); ?>
+	<?php the_content(); ?>
+  // ...
 
 <?php endwhile; else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
+
+// texto com formatação/estilo
+	<?php endwhile; else: ?>
+	<section class="container sobre">
+		<div class="grid-8">
+			<p>Essa página não existe</p>
+		</div>
+	</section>
+
+// ou só fechando (mais simples / sem mensagem):
+<?php endwhile; else: endif; ?>
