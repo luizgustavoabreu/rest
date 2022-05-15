@@ -5,6 +5,14 @@ https://codex.wordpress.org/Template_Tags
 https://developer.wordpress.org/themes/basics/template-hierarchy
 https://wphierarchy.com
 https://codex.wordpress.org/The_Loop
+https://www.origamid.com/curso/extras
+https://www.origamid.com/slide/extras/#/02-custom-field-acf
+https://www.origamid.com/slide/extras/#/03-custom-field-cmb2
+https://www.advancedcustomfields.com/resources
+https://www.advancedcustomfields.com/resources/code-examples
+https://github.com/CMB2/CMB2/wiki
+https://github.com/CMB2/CMB2/wiki/Field-Types
+https://docs.google.com/spreadsheets/d/1mSqienVYxLopTFGLPK0lGCJst2knKzXDtLQRgwjeBN8/edit#gid=3
 
 1 - Copiar a pasta do site para wp-content/themes/
 
@@ -75,5 +83,14 @@ Adicionar o Loop nas páginas e no index.php
 		</div>
 	</section>
 
-// ou só fechando (mais simples / sem mensagem):
+// ou só fechando (mais simples / sem mensagem)
 <?php endwhile; else: endif; ?>
+
+12 - Advanced Custom Fields
+
+Adicionar o Plugin Advanced Custom Fields Pro
+(Nota: o Pro é pago e só pode ser utilizado nos arquivos do curso)
+(Existem alternativas, como o CMB2, a lógica é a mesma - ver listagem na planilha em Links úteis)
+
+Iniciar a troca do conteúdo por fields, <?php the_field('nome_conteudo'); ?>
+Adicionar o conteúdo a interface do Custom Fields.
