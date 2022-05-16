@@ -10,6 +10,7 @@ https://www.origamid.com/slide/extras/#/02-custom-field-acf
 https://www.origamid.com/slide/extras/#/03-custom-field-cmb2
 https://www.advancedcustomfields.com/resources
 https://www.advancedcustomfields.com/resources/code-examples
+https://www.advancedcustomfields.com/resources/repeater/
 https://github.com/CMB2/CMB2/wiki
 https://github.com/CMB2/CMB2/wiki/Field-Types
 https://docs.google.com/spreadsheets/d/1mSqienVYxLopTFGLPK0lGCJst2knKzXDtLQRgwjeBN8/edit#gid=3
@@ -77,11 +78,12 @@ Adicionar o Loop nas páginas e no index.php
 
 // texto com formatação/estilo
 	<?php endwhile; else: ?>
-	<section class="container sobre">
-		<div class="grid-8">
-			<p>Essa página não existe</p>
-		</div>
-	</section>
+		<section class="container sobre">
+			<div class="grid-8">
+				<p>Essa página não existe</p>
+			</div>
+		</section>
+	<?php endif; ?>
 
 // ou só fechando (mais simples / sem mensagem)
 <?php endwhile; else: endif; ?>
@@ -94,3 +96,11 @@ Adicionar o Plugin Advanced Custom Fields Pro
 
 Iniciar a troca do conteúdo por fields, <?php the_field('nome_conteudo'); ?>
 Adicionar o conteúdo a interface do Custom Fields.
+
+13 - Repeater Field
+
+<?php if(have_rows('nomedorepeater')): while(have_rows('nomedorepeater')) : the_row(); ?>
+	
+	<?php the_sub_field('nomedocampo'); ?>
+
+<?php endwhile; else : endif; ?>
