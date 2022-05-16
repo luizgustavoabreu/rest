@@ -10,18 +10,24 @@ https://www.origamid.com/slide/extras/#/02-custom-field-acf
 https://www.origamid.com/slide/extras/#/03-custom-field-cmb2
 https://www.advancedcustomfields.com/resources
 https://www.advancedcustomfields.com/resources/code-examples
-https://www.advancedcustomfields.com/resources/repeater/
+https://www.advancedcustomfields.com/resources/repeater
+https://www.advancedcustomfields.com/resources/code-examples/#getting-values%20from%20another%20page
 https://github.com/CMB2/CMB2/wiki
 https://github.com/CMB2/CMB2/wiki/Field-Types
 https://docs.google.com/spreadsheets/d/1mSqienVYxLopTFGLPK0lGCJst2knKzXDtLQRgwjeBN8/edit#gid=3
 
+
 1 - Copiar a pasta do site para wp-content/themes/
+
 
 2 - Mudar o index.html para index.php
 
+
 3 - Colocar/criar o arquivo style.css na raiz do tema
 
+
 4 - Adicionar a descrição do tema no topo do style.css
+
 /*
 Theme Name: Rest
 Theme URI: https://rest.com
@@ -31,11 +37,15 @@ Description: Tema criado para o restaurante Rest
 Version: 1.0
 */
 
+
 5 - Ativar o tema no Wordpress
 
+
 6 - Corrigir o caminho do style.css e outros caminhos se necessário
+
 <?php echo get_stylesheet_directory_uri(); ?>
 Essa função adiciona o caminho até a raiz do tema
+
 
 7 - Separar o header e o footer em arquivos header.php e footer.php
 
@@ -45,14 +55,18 @@ Com <?php get_header(); ?> e <?php get_footer(); ?>
 Adicionar no header.php antes de fechar o head: <?php wp_head(); ?>
 Adicionar no footer.php antes de fechar o body: <?php wp_footer(); ?>
 
+
 8 - Começar a substituir o conteúdo por funções de Wordpress
 
 <?php bloginfo('name'); ?>
 Mostra o nome do blog/site
 
+
 9 - Adicionar as páginas na interface do Wordpress
 
+
 10 - Transformar as páginas em HTML, em templates de Páginas
+
 A página index.php deve estar reservada para conteúdo genérico.
 Adicionar o nome page- na frente de cada template de página para facilitar a organização (opcional).
 Adicionar no início das páginas/templates:
@@ -60,7 +74,9 @@ Adicionar no início das páginas/templates:
 // Template Name: nome da página
 ?>
 
+
 11 - Adicionar o Loop
+
 O Loop é utilizado para mostrar o conteúdo dos posts,
 ele é inteligente o suficiente para saber se precisa mostrar apenas um ou uma sequência.
 
@@ -73,20 +89,21 @@ Adicionar o Loop nas páginas e no index.php
   // ...
 
 <?php endwhile; else: ?>
-<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+	<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
 
 // texto com formatação/estilo
-	<?php endwhile; else: ?>
-		<section class="container sobre">
-			<div class="grid-8">
-				<p>Essa página não existe</p>
-			</div>
-		</section>
-	<?php endif; ?>
+<?php endwhile; else: ?>
+	<section class="container sobre">
+		<div class="grid-8">
+			<p>Essa página não existe</p>
+		</div>
+	</section>
+<?php endif; ?>
 
 // ou só fechando (mais simples / sem mensagem)
 <?php endwhile; else: endif; ?>
+
 
 12 - Advanced Custom Fields
 
@@ -97,6 +114,7 @@ Adicionar o Plugin Advanced Custom Fields Pro
 Iniciar a troca do conteúdo por fields, <?php the_field('nome_conteudo'); ?>
 Adicionar o conteúdo a interface do Custom Fields.
 
+
 13 - Repeater Field
 
 <?php if(have_rows('nomedorepeater')): while(have_rows('nomedorepeater')) : the_row(); ?>
@@ -104,3 +122,20 @@ Adicionar o conteúdo a interface do Custom Fields.
 	<?php the_sub_field('nomedocampo'); ?>
 
 <?php endwhile; else : endif; ?>
+
+
+14 - Pegar valores de outras páginas
+
+// Pelo título da página:
+<?php $contato = get_page_by_title('contato');
+<p><?php the_field('endereco_header', $contato); ?></p>
+<p class="telefone"><?php the_field('telefone_header', $contato); ?></p>
+
+// Pelo ID da página (melhor opção, pois o usuário pode querer mudar o título):
+<?php $contato = 29; ?>
+<p><?php the_field('endereco_header', $contato); ?></p>
+<p class="telefone"><?php the_field('telefone_header', $contato); ?></p>
+
+// Pelo ID, sem a variável:
+<p><?php the_field('endereco_header', 29); ?></p>
+<p class="telefone"><?php the_field('telefone_header', 29); ?></p>
