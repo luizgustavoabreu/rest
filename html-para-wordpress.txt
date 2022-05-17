@@ -139,3 +139,7 @@ Adicionar o conteúdo a interface do Custom Fields.
 // Pelo ID, sem a variável:
 <p><?php the_field('endereco_header', 29); ?></p>
 <p class="telefone"><?php the_field('telefone_header', 29); ?></p>
+
+
+15 - Terminar de adicionar os outros campos, exemplo:
+<?php echo date("Y"); ?> (Mostra o ano corrente) usando no footer
