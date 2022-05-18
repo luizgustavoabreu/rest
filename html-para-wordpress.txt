@@ -143,3 +143,8 @@ Adicionar o conteúdo a interface do Custom Fields.
 
 15 - Terminar de adicionar os outros campos, exemplo:
 <?php echo date("Y"); ?> (Mostra o ano corrente) usando no footer
+
+
+16 - Adicionar campos para SEO
+<title><?php bloginfo('name'); ?> - <?php wp_title(''); ?> <?php the_field('title_seo'); ?></title>
+<meta name="description" content="<?php bloginfo('name'); ?> - <?php wp_title(''); ?> <?php the_field('description_seo'); ?>">
